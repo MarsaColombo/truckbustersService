@@ -2,18 +2,25 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const TruckSchema = new Schema({
-  _id: { type: Number, required: true },
   brand: {
     type: String,
-    required: true,
+    required: [true, "Brand name is required"],
+    minlength: [2, "Brand name must be at least 2 characters"],
+    maxlength: [50, "Brand name cannot exceed 50 characters"],
+    trim: true,
   },
   model: {
     type: String,
-    required: true,
+    required: [true, "Model name is required"],
+    minlength: [2, "Model name must be at least 2 characters"],
+    maxlength: [50, "Model name cannot exceed 50 characters"],
+    trim: true,
   },
   registration: {
-    type: Number,
-    required: true,
+    type: String,
+    required: [true, "Registration number is required"],
+    min: [8, "Registration number must be at least 8"],
+    max: [10, "Registration number cannot exceed 10"],
   },
   created_at: {
     type: Date,
@@ -25,6 +32,6 @@ const TruckSchema = new Schema({
   },
 });
 
-exports.Trucks = mongoose.model("Truck", TruckSchema);
+exports.Truck = mongoose.model("Truck", TruckSchema);
 
 

@@ -2,19 +2,25 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const AppointmentSchema = new Schema({
-  _id: { type: Number, required: true },
   startTime: {
     type: Date,
-    required: true,
+    required: [true, "Start time is required"],
+    validate: {
+      validator: function(value) {
+        return value < this.endTime;
+      },
+      message: "Start time must be before end time"
+    }
   },
   endTime: {
     type: Date,
-    required: true,
+    required: [true, "End time is required"],
   },
   status: {
     type: String,
     default: "pending",
-    required: true,
+    required: [true, "Status is required"],
+    enum: ["pending", "confirmed", "cancelled"]
   },
   created_at: {
     type: Date,
@@ -24,6 +30,16 @@ const AppointmentSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  clientId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Client",
+    index: true,
+  },
+  serviceId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Service",
+    index: true,
+  },
 });
 
-exports.Client = mongoose.model("Client", AppointmentSchema);
+exports.Appointment = mongoose.model("Appointment", AppointmentSchema);
