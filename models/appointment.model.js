@@ -42,4 +42,23 @@ const AppointmentSchema = new Schema({
   },
 });
 
+AppointmentSchema.virtual('overlappingAppointments').get(async function() {
+  try {
+    const Appointment = mongoose.model("Appointment");
+    
+    const overlappingAppointments = await Appointment.find({
+      _id: { $ne: this._id }, 
+      startTime: { $lt: this.endTime },
+      endTime: { $gt: this.startTime }
+    });
+
+    return overlappingAppointments;
+  } catch (error) {
+    console.error('Error retrieving overlapping appointments:', error);
+    return null;
+  }
+});
+
+AppointmentSchema.set('toJSON', { virtuals: true });
+
 exports.Appointment = mongoose.model("Appointment", AppointmentSchema);
