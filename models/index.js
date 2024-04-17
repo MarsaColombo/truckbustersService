@@ -3,9 +3,10 @@ const Client = require("./client.model");
 const Truck = require("./truck.model");
 const Appointment = require("./appointment.model");
 
-exports.modules = {
+module.exports = {
   Service,
   Client,
   Truck,
   Appointment,
 };
+
