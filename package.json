@@ -17,9 +17,12 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
+    "@faker-js/faker": "^8.4.1",
     "eslint": "^9.0.0",
     "faker": "^6.6.6",
     "globals": "^15.0.0",
-    "nodemon": "^3.1.0"
+    "install": "^0.13.0",
+    "nodemon": "^3.1.0",
+    "npm": "^10.5.2"
   }
 }

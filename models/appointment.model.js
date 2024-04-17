@@ -61,4 +61,5 @@ AppointmentSchema.virtual('overlappingAppointments').get(async function() {
 
 AppointmentSchema.set('toJSON', { virtuals: true });
 
-exports.Appointment = mongoose.model("Appointment", AppointmentSchema);
+const Appointment = mongoose.model('Appointment', AppointmentSchema)
+module.exports = Appointment

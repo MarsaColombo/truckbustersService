@@ -5,7 +5,6 @@ const ClientSchema = new Schema({
   gender: {
     type: String,
     required: [true, "Gender is required"],
-    enum: ["male", "female", "other"],
   },
   firstname: {
     type: String,
@@ -37,14 +36,12 @@ const ClientSchema = new Schema({
     },
   },
   phone_number: {
-    type: Number,
+    type: String,
     required: [true, "Phone number is required"],
-    min: [1000000000, "Phone number must be at least 10 digits"],
-    max: [9999999999, "Phone number cannot exceed 10 digits"],
   },
   promo_code: {
     type: String,
-    minlength: [2, "Promo code must be at least 2 characters"],
+    minlength: [0, "Promo code must be at least 2 characters"],
     maxlength: [20, "Promo code cannot exceed 20 characters"],
   },
   truckId: {
@@ -56,4 +53,5 @@ const ClientSchema = new Schema({
   updated_at: { type: Date, default: Date.now },
 });
 
-exports.Client = mongoose.model("Client", ClientSchema);
+const Client = mongoose.model('Client', ClientSchema)
+module.exports = Client

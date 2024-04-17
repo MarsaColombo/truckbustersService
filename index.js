@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 require('dotenv').config();
 const process = require('process');
+const seedData = require('./seedData.js');
 
 const connectDB = async () => {
         const uri = process.env.MONGODB_URI;
@@ -14,4 +15,10 @@ const connectDB = async () => {
     }
   }
 
-connectDB();
+const init = async () => {  
+    await connectDB();
+    await seedData;
+    process.exit(0);
+}
+
+init();
