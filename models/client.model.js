@@ -27,7 +27,6 @@ const ClientSchema = new Schema({
   email: {
     type: String,
     required: [true, "Email is required"],
-    unique: true,
     validate: {
       validator: function (v) {
         return /\S+@\S+\.\S+/.test(v);
