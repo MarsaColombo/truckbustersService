@@ -27,7 +27,6 @@ const ClientSchema = new Schema({
   email: {
     type: String,
     required: [true, "Email is required"],
-    unique: true,
     validate: {
       validator: function (v) {
         return /\S+@\S+\.\S+/.test(v);
@@ -44,7 +43,7 @@ const ClientSchema = new Schema({
     minlength: [0, "Promo code must be at least 2 characters"],
     maxlength: [20, "Promo code cannot exceed 20 characters"],
   },
-  truckId: {
+  truck: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Truck",
     index: true,
@@ -54,4 +53,4 @@ const ClientSchema = new Schema({
 });
 
 const Client = mongoose.model('Client', ClientSchema)
-module.exports = Client
+module.exports = {Client, ClientSchema}

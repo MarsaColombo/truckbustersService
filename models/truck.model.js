@@ -33,5 +33,5 @@ const TruckSchema = new Schema({
 });
 
 const Truck = mongoose.model('Truck', TruckSchema);
-module.exports = Truck;
+module.exports = {Truck, TruckSchema};
 
