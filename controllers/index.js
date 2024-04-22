@@ -3,6 +3,7 @@ const {
   getAppointmentById,
   postAnAppointment,
   deleteAnAppointment,
+  putAnAppointment
 } = require("./appointment");
 
 module.exports = {
@@ -10,4 +11,5 @@ module.exports = {
   getAppointmentById,
   postAnAppointment,
   deleteAnAppointment,
+  putAnAppointment
 };
