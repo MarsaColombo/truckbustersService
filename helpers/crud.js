@@ -1,5 +1,4 @@
 const {
-  getPaginationParameters,
   getAllDocumentsFromCollection,
   getOneDocumentFromCollection,
   postChildreenFromParent,
@@ -7,8 +6,7 @@ const {
   putChildreenFromParent,
 } = require("./utils");
 const mongoose = require("mongoose");
-const getAll = async (model, req) => {
-  const { page, limit, skip } = getPaginationParameters(req);
+const getAll = async (model, skip, limit, page) => {
   try {
     const data = await getAllDocumentsFromCollection(model, skip, limit);
     const total = await model.countDocuments();
@@ -39,7 +37,6 @@ const getOneById = async (model, json) => {
     return { error: error.message };
   }
 };
-
 const postOne = async (model, req) => {
   try {
     const session = await mongoose.startSession();

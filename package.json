@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "seed": "node seedData.js"
+    "seed": "node seedData.js",
+    "swagger": "node ./middleware/swagger.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +16,9 @@
     "loadash": "^1.0.0",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
-    "node": "^18.20.2"
+    "node": "^18.20.2",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
@@ -25,6 +28,7 @@
     "globals": "^15.0.0",
     "install": "^0.13.0",
     "nodemon": "^3.1.0",
-    "npm": "^10.5.2"
+    "npm": "^10.5.2",
+    "swagger-autogen": "^2.23.7"
   }
 }

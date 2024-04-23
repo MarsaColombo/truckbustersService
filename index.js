@@ -6,6 +6,8 @@ const app = express();
 const appointmentRouter = require("./routes/appointment.js");
 const seedData = require("./seedData.js");
 const bodyParser = require("body-parser");
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./middleware/swagger-output.json');
 
 
 const connectDB = async () => {
@@ -32,6 +34,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(`/appointments`, appointmentRouter);
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use((req, res, next) => {
     const error = new Error("Not found");
