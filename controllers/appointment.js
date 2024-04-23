@@ -1,9 +1,11 @@
 const helper = require("../helpers");
 const { Appointment } = require("../models");
 
+
 const getAppointments = async (req, res) => {
   try {
-    const response = await helper.getAll(Appointment, req);
+    const { page, limit, skip } = helper.getPaginationParameters(req);
+    const response = await helper.getAll(Appointment, skip, limit, page); 
     if (!response) {
       return res.status(404).send("No appointments found");
     }

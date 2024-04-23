@@ -1,4 +1,5 @@
 const { getAll, getOneById, postOne, deleteOne, updateOne } = require("./crud");
+const { getPaginationParameters } = require("./utils");
 
 module.exports = {
   getAll,
@@ -6,4 +7,5 @@ module.exports = {
   updateOne,
   getOneById,
   deleteOne,
+  getPaginationParameters
 };
